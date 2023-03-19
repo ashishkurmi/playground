@@ -1,0 +1,16 @@
+name: Network
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Network
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 2
+      - run: dig google.com
+      - run: curl google.com -L
+      - run: dig bing.com
+      - run: curl bing.com -L
+      - run: curl github.com -L
+      - run: curl facebook.com -L
+      - run: curl http://208.80.154.224
