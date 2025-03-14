@@ -54,3 +54,8 @@ jobs:
         run: echo "Using secret GHASECRET4"
         env:
           GHASECRET4: ${{ secrets.GHASECRET4 }}
+
+      - name: Use Secret DATABASEPASSWORD
+        run: echo "Using secret GHASECRET4"
+        env:
+          GHASECRET4: ${{ secrets.DATABASEPASSWORD }}
