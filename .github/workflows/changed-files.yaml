@@ -1,4 +1,3 @@
-# Vulnerability details at https://securitylab.github.com/advisories/GHSL-2023-271_changed-files/
 name: "Changed-Files Vulnerability: With Harden-Runner"
 
 on:
@@ -34,3 +33,24 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
+
+      # Using Secrets
+      - name: Use Secret GHASECRET1
+        run: echo "Using secret GHASECRET1"
+        env:
+          GHASECRET1: ${{ secrets.GHASECRET1 }}
+
+      - name: Use Secret GHASECRET2
+        run: echo "Using secret GHASECRET2"
+        env:
+          GHASECRET2: ${{ secrets.GHASECRET2 }}
+
+      - name: Use Secret GHASECRET3
+        run: echo "Using secret GHASECRET3"
+        env:
+          GHASECRET3: ${{ secrets.GHASECRET3 }}
+
+      - name: Use Secret GHASECRET4
+        run: echo "Using secret GHASECRET4"
+        env:
+          GHASECRET4: ${{ secrets.GHASECRET4 }}
