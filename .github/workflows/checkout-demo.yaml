@@ -1,0 +1,11 @@
+name: checkout demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b0e28b5ac45a892f91e7d036f8200cf5ed489415
