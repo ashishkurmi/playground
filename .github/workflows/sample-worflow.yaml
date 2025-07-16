@@ -21,3 +21,16 @@ jobs:
       - name: Hello World
         run: |
           echo "Hello World"
+
+      - name: Get PR Information
+        id: pr-info
+        run: |
+          set -x
+          PR_NUM=${{ github.event.number || github.event.issue.number }}
+          echo "PR_INFO=$(gh -R ${{ github.repository }} pr view ${PR_NUM} --json headRepository,headRepositoryOwner,headRefName | jq -c)" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
+        with:
+          repository: '${{ fromJSON(steps.pr-info.outputs.PR_INFO).headRepositoryOwner.login }}/${{ fromJSON(steps.pr-info.outputs.PR_INFO).headRepository.name }}'
+          ref: '${{ fromJSON(steps.pr-info.outputs.PR_INFO).headRefName }}'
