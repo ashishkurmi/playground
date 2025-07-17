@@ -6,6 +6,11 @@ jobs:
     name: Network
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@int
+        with:
+          egress-policy: audit
+
       - run: sleep 2
       - run: dig google.com
       - run: curl google.com -L
